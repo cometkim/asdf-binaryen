@@ -26,7 +26,7 @@ function download_version() {
     curl "${curl_opts[@]}" -o "$tmpdir/binaryen.tgz" "$bin_url" || fail "Couldn't download Binaryen from $bin_url"
 
     tar -xzf "$tmpdir/binaryen.tgz" -C "$tmpdir"
-    cp -r "$tmpdir/binaryen-version_$version"/* $download_path"
+    cp -r "$tmpdir/binaryen-version_$version"/* "$download_path"
   ) || (rm -rf "$download_path"; fail "Failed to download Binaryen $version")
 }
 
