@@ -19,6 +19,19 @@ jobs:
       - uses: asdf-vm/actions/plugin-test@v3
         with:
           command: |
+            wasm2js --version
+            wasm-as --version
+            wasm-ctor-eval --version
+            wasm-dis --version
+            wasm-emscripten-finalize --version
+            wasm-fuzz-lattices --version
+            wasm-fuzz-types --version
+            wasm-merge --version
+            wasm-metadce --version
             wasm-opt --version
+            wasm-reduce --version
+            wasm-shell --version
+            wasm-split --version
+            binaryen-unittests
         env:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
