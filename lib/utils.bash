@@ -26,7 +26,7 @@ function list_github_releases() {
 
 function get_platform() {
   case "$OSTYPE" in
-    darwin*) echo -n "darwin" ;;
+    darwin*) echo -n "macos" ;;
     linux*) echo -n "linux" ;;
     *) fail "Unsupported platform" ;;
   esac
