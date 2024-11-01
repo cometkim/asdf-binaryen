@@ -1,4 +1,5 @@
 # asdf-binaryen
+[![CI](https://github.com/cometkim/asdf-binaryen/actions/workflows/ci.yml/badge.svg)](https://github.com/cometkim/asdf-binaryen/actions/workflows/ci.yml)
 
 [asdf](https://asdf-vm.com/) version manager plugin for installing [Binaryen](https://hermesengine.dev); the WebAssembly toolchain.
 
