@@ -11,10 +11,9 @@ if [ -n "${GITHUB_API_TOKEN:-}" ]; then
 fi
 
 function sort_versions() {
-  sed 's/version_//' |
-    awk -F '_' '{printf "%s %s\n", $1, ($2 ? $2 : "")}' |
+  awk -F '_' '{printf "%s %s\n", $1, ($2 ? $2 : "")}' |
     sort -k1,1n -k2,2 |
-    awk '{print "version_" $1 ($2 ? "_" $2 : "")}'
+    awk '{print $1 ($2 ? "_" $2 : "")}'
 }
 
 function list_github_releases() {
@@ -22,7 +21,7 @@ function list_github_releases() {
     -H "Accept: application/vnd.github+json" \
     "https://api.github.com/repos/$GITHUB_REPO/releases?per_page=100" |
     grep -o '"tag_name": "version_.*"' |
-    sed -E 's/"tag_name": "(version_.*)"/\1/'
+    sed -E 's/"tag_name": "version_(.*)"/\1/'
 }
 
 function get_platform() {
@@ -53,7 +52,7 @@ function get_bin_target() {
 
   local target="$arch-$platform"
 
-  echo -n "binaryen-$version-$target"
+  echo -n "binaryen-version_$version-$target"
 }
 
 function get_bin_url() {
@@ -62,13 +61,13 @@ function get_bin_url() {
   local target
   target=$(get_bin_target $version)
 
-  echo -n "$REPO_URL/releases/download/$version/$target.tar.gz"
+  echo -n "$REPO_URL/releases/download/version_$version/$target.tar.gz"
 }
 
 function get_source_url() {
   local version=$1
 
-  echo -n "$REPO_URL/archive/$version.zip"
+  echo -n "$REPO_URL/archive/version_$version.zip"
 }
 
 function get_temp_dir() {

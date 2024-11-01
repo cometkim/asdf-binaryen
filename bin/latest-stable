@@ -20,7 +20,7 @@ printf "redirect url: %s\n" "$redirect_url" >&2
 if [[ "$redirect_url" == "$REPO_URL/releases" ]]; then
 	version="$(list_github_releases | sort_versions | tail -n1 | xargs echo)"
 else
-	version="$(printf "%s\n" "$redirect_url" | sed 's|.*/tag/||')"
+	version="$(printf "%s\n" "$redirect_url" | sed 's|.*/tag/version_||')"
 fi
 
 printf "%s\n" "$version"

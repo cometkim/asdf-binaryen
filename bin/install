@@ -16,14 +16,13 @@ function install_version() {
   (
     mkdir -p "$install_path/bin"
 
-    echo "Installing Hermes v$version..."
+    echo "Installing Binaryen version_$version..."
 
     cp -r "$download_path"/* "$install_path"
     chmod +x "$install_path/bin"/*
 
-    echo "Binaryen $version is installed successfully!"
-    echo "(Library and headers are also included)"
-  ) || (rm -rf "$install_path"; fail "Failed to install Binaryen $version")
+    echo "Binaryen version_$version is installed successfully!"
+  ) || (rm -rf "$install_path"; fail "Failed to install Binaryen version_$version")
 }
 
 if [[ "$ASDF_INSTALL_TYPE" != "version" ]]; then
