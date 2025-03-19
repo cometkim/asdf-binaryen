@@ -6,7 +6,7 @@
 ## Installation
 
 ```bash
-asdf plugin add https://github.com/cometkim/asdf-binaryen.git
+asdf plugin add binaryen
 ```
 
 ## Usage
